@@ -1,0 +1,13 @@
+<p>
+  <b>Text:</b>
+  <%=h @twitterfeed.text %>
+</p>
+
+<p>
+  <b>User:</b>
+  <%=h @twitterfeed.user %>
+</p>
+
+
+<%= link_to 'Edit', edit_twitterfeed_path(@twitterfeed) %> |
+<%= link_to 'Back', twitterfeeds_path %>

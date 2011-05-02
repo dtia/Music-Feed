@@ -1,0 +1,22 @@
+<h1>Listing twitterfeeds</h1>
+
+<table>
+  <tr>
+    <th>Text</th>
+    <th>User</th>
+  </tr>
+
+<% for twitterfeed in @twitterfeeds %>
+  <tr>
+    <td><%=h twitterfeed.text %></td>
+    <td><%=h twitterfeed.user %></td>
+    <td><%= link_to 'Show', twitterfeed %></td>
+    <td><%= link_to 'Edit', edit_twitterfeed_path(twitterfeed) %></td>
+    <td><%= link_to 'Destroy', twitterfeed, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New twitterfeed', new_twitterfeed_path %>
