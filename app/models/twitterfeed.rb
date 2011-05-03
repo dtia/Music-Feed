@@ -25,7 +25,30 @@ class Twitterfeed < ActiveRecord::Base
       end
     end    
     
-    def total_num_items
+    def self.parse_trending_topics
+      url = URI.parse('http://api.twitter.com/1/trends/2487956.json')
+      req = Net::HTTP::Get.new(url.path)
+      res = Net::HTTP.start(url.host, url.port) {|http|
+        http.request(req)
+      }
+      json_string = res.body
+      trending_topics = ActiveSupport::JSON.decode(json_string)    
+      trending_topics.each do |trending_topic|
+        trending_topic_obj = trending_topic["trends"]
+        i=1
+        trending_topic_obj.each do |topic|
+          name = topic["name"]
+          puts "#{name}"
+          twitterfeed = Twitterfeed.new
+          twitterfeed.text = name
+          twitterfeed.user = i
+          twitterfeed.save
+          i=i+1
+        end
+      end
+  end
+    
+    def self.total_num_items
       @twitterfeeds.sum { |twitterfeed| twitterfeed.quantity }
     end
 end

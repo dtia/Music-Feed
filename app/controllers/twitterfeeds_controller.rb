@@ -2,7 +2,9 @@ class TwitterfeedsController < ApplicationController
   # GET /twitterfeeds
   # GET /twitterfeeds.xml
   def index
-    Twitterfeed.parse_public_timeline
+    Twitterfeed.destroy_all
+    #Twitterfeed.parse_public_timeline
+    Twitterfeed.parse_trending_topics
     @twitterfeeds = Twitterfeed.find(:all)
     
     respond_to do |format|
