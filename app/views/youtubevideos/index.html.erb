@@ -1,0 +1,24 @@
+<h1>Listing youtubevideos</h1>
+
+<table>
+  <tr>
+    <th>Title</th>
+    <th>Url</th>
+    <th>User</th>
+  </tr>
+
+<% for youtubevideo in @youtubevideos %>
+  <tr>
+    <td><%=h youtubevideo.title %></td>
+    <td><%=h youtubevideo.url %></td>
+    <td><%=h youtubevideo.user %></td>
+    <td><%= link_to 'Show', youtubevideo %></td>
+    <td><%= link_to 'Edit', edit_youtubevideo_path(youtubevideo) %></td>
+    <td><%= link_to 'Destroy', youtubevideo, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New youtubevideo', new_youtubevideo_path %>

@@ -4,7 +4,11 @@ class TwitterfeedsController < ApplicationController
   def index
     Twitterfeed.destroy_all
     #Twitterfeed.parse_public_timeline
-    Twitterfeed.parse_trending_topics
+    #Twitterfeed.parse_trending_topics
+    
+    Twitterfeed.parse_search_query("%23nowplaying")
+    song_name = Youtubevideo.get_song_name()
+    Youtubevideo.get_youtube_video(song_name)
     @twitterfeeds = Twitterfeed.find(:all)
     
     respond_to do |format|

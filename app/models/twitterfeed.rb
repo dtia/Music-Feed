@@ -38,7 +38,6 @@ class Twitterfeed < ActiveRecord::Base
         i=1
         trending_topic_obj.each do |topic|
           name = topic["name"]
-          puts "#{name}"
           twitterfeed = Twitterfeed.new
           twitterfeed.text = name
           twitterfeed.user = i
@@ -47,7 +46,28 @@ class Twitterfeed < ActiveRecord::Base
         end
       end
   end
+  
+  def self.parse_search_query(query)
+    url = URI.parse('http://search.twitter.com/search.json')
+    req = Net::HTTP::Get.new(url.path + '?q=' + query)
+    res = Net::HTTP.start(url.host, url.port) {|http|
+      http.request(req)
+    }
+    json_string = res.body
+    json_results = ActiveSupport::JSON.decode(json_string)    
+    json_results_obj = json_results["results"]
     
+    json_results_obj.each do |search_result_obj|
+      text = search_result_obj["text"]
+      username = search_result_obj["from_user"]
+      
+      twitterfeed = Twitterfeed.new
+      twitterfeed.text = text
+      twitterfeed.user = username
+      twitterfeed.save
+    end
+  end
+        
     def self.total_num_items
       @twitterfeeds.sum { |twitterfeed| twitterfeed.quantity }
     end
