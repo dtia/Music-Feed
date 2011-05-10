@@ -64,6 +64,7 @@ class Twitterfeed < ActiveRecord::Base
       twitterfeed = Twitterfeed.new
       twitterfeed.text = text
       twitterfeed.user = username
+      twitterfeed.video = Youtubevideo.get_youtube_video(text)
       twitterfeed.save
     end
   end

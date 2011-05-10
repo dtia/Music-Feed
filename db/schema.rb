@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110501204604) do
+ActiveRecord::Schema.define(:version => 20110510054820) do
 
   create_table "line_items", :force => true do |t|
     t.integer  "product_id",                                :null => false
@@ -53,12 +53,21 @@ ActiveRecord::Schema.define(:version => 20110501204604) do
     t.string   "user"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "video"
   end
 
   create_table "users", :force => true do |t|
     t.string   "name"
     t.string   "hashed_password"
     t.string   "salt"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "youtubevideos", :force => true do |t|
+    t.string   "title"
+    t.string   "url"
+    t.string   "user"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

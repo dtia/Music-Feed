@@ -7,8 +7,8 @@ class TwitterfeedsController < ApplicationController
     #Twitterfeed.parse_trending_topics
     
     Twitterfeed.parse_search_query("%23nowplaying")
-    song_name = Youtubevideo.get_song_name()
-    Youtubevideo.get_youtube_video(song_name)
+    
+    #Youtubevideo.get_youtube_video(Youtubevideo.concatenate_query("whats my name"))
     @twitterfeeds = Twitterfeed.find(:all)
     
     respond_to do |format|
