@@ -1,4 +1,6 @@
 ActionController::Routing::Routes.draw do |map|
+  map.resources :youtubevideos
+
   map.resources :twitterfeeds
 
   map.resources :users

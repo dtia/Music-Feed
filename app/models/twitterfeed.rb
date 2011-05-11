@@ -49,7 +49,7 @@ class Twitterfeed < ActiveRecord::Base
   
   def self.parse_search_query(query)
     url = URI.parse('http://search.twitter.com/search.json')
-    req = Net::HTTP::Get.new(url.path + '?q=' + query)
+    req = Net::HTTP::Get.new(url.path + '?q=' + query + '&lang=en')
     res = Net::HTTP.start(url.host, url.port) {|http|
       http.request(req)
     }
@@ -60,7 +60,11 @@ class Twitterfeed < ActiveRecord::Base
     json_results_obj.each do |search_result_obj|
       text = search_result_obj["text"]
       username = search_result_obj["from_user"]
-      
+      #text = 'RT @satrio_7: Jamie All Over - @MaydayParadeIND'
+      #text = 'RT+%40satrio_7%3A+Jamie+All+Over+-+%40MaydayParadeIND'
+      #text = 'whats my name by rihanna'
+      #text = 'RT @lvnsykn: #nowplaying lady gaga - just dance! www.yahoo.com'
+      #text = '\u30b8\u30e3\u30af\u30bd\u30f3\u796d\u308a\u306a\u3046\u266a #nowplaying Don\'t Stop \'Til You Get Enough / Michael Jackson -  (Album &quot;Off The Wall&quot;, Track 1)'
       twitterfeed = Twitterfeed.new
       twitterfeed.text = text
       twitterfeed.user = username
