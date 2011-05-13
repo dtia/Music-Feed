@@ -9,16 +9,20 @@
   <%= javascript_include_tag :defaults %>
 </head>
 <body>
+	<div id = "nowplaying_page">
+		<p style="color: green"><%= flash[:notice] %></p>
 
-<p style="color: green"><%= flash[:notice] %></p>
-
-<%= yield :layout %>
-
-<div id = "video_title">
-</div>
+		<div id = "video_container">
+			<div id = "video_title">
+			</div>
 	
-<div id = "video_player">
-</div>
-
+			<div id = "video_player">
+			</div>
+		</div>
+		
+		<div id = "main">
+			<%= yield :layout %>
+		</div>
+	</div>
 </body>
 </html>

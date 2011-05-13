@@ -55,9 +55,25 @@ a:hover { color: #fff; background-color:#000; }
 table, th {
 	border: 2px solid black;
 	border-collapse:collapse;
+	width: 65%;
 }
 
 td {
 	border: 1px solid black;
 	padding: 6px;
+}
+
+#video_container {
+	float: right;
+	padding-top: 4ex;
+	margin-top: 8em;
+	margin-right: 4em;
+		
+}
+
+#main {
+	margin-right: 13em;
+	padding-top: 4ex;
+  	padding-left: 2em;
+  	background: white;
 }
