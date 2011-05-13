@@ -2,7 +2,8 @@ require 'net/http'
 
 class Youtubevideo < ActiveRecord::Base
   def self.get_youtube_video(tweet)
-    query = format_query(get_song_name(tweet))
+    song_name = get_song_name(tweet)
+    query = format_query(song_name)
     url = URI.parse('http://gdata.youtube.com/feeds/api/videos')
     http_url = url.path + '?q=' + query + '&orderby=relevance&start-index=1&max-results=1&v=2&alt=json'
     req = Net::HTTP::Get.new(http_url)
@@ -32,7 +33,7 @@ class Youtubevideo < ActiveRecord::Base
       end
     end
 
-    return [video, title]
+    return [video, title, song_name]
 
   end
   

@@ -67,10 +67,11 @@ class Twitterfeed < ActiveRecord::Base
       #text = '\u30b8\u30e3\u30af\u30bd\u30f3\u796d\u308a\u306a\u3046\u266a #nowplaying Don\'t Stop \'Til You Get Enough / Michael Jackson -  (Album &quot;Off The Wall&quot;, Track 1)'
       twitterfeed = Twitterfeed.new
       twitterfeed.text = CGI.unescapeHTML(text)
-      twitterfeed.user = username
+      #twitterfeed.user = username
       video_info = Youtubevideo.get_youtube_video(text)
       twitterfeed.video = video_info[0]
       twitterfeed.title = video_info[1]
+      twitterfeed.user = video_info[2]
       twitterfeed.save
     end
   end

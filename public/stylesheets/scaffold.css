@@ -1,4 +1,4 @@
-body { background-color: #fff; color: #333; }
+body { background-color: #EBECE4; color: #333; }
 
 body, p, ol, ul, td {
   font-family: verdana, arial, helvetica, sans-serif;
@@ -52,10 +52,14 @@ a:hover { color: #fff; background-color:#000; }
   list-style: square;
 }
 
-table, th {
+table {
 	border: 2px solid black;
 	border-collapse:collapse;
-	width: 45%;
+	width: 50%;
+}
+
+th {
+	padding: 2px;
 }
 
 td {
@@ -70,11 +74,15 @@ td {
 	margin-right: 4em;		
 }
 
+#video_title {
+	white-space: wrap;
+}
+
 #main {
 	margin-right: 13em;
 	padding-top: 4ex;
   	padding-left: 2em;
-  	background: white;
+  	background-color: #EBECE4;
 }
 
 #youtube-player {

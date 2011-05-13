@@ -7,14 +7,13 @@
 <table>
   <tr>
     <th>Tweet</th>
-    <th>User</th>
+    <th>Song Query</th>
 	<th>Video</th>
   </tr>
 
 <% for twitterfeed in @twitterfeeds %>
   <tr>
-    <td><%=h twitterfeed.text %>
-	</td>
+    <td><%=h twitterfeed.text %></td>
     <td><%=h twitterfeed.user %></td>
 	<td>
 		<% if twitterfeed.video != nil %>
