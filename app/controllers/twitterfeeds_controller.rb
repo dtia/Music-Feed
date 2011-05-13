@@ -16,6 +16,14 @@ class TwitterfeedsController < ApplicationController
       format.xml  { render :xml => @twitterfeeds }
     end
   end
+  
+  def play_video
+    @video_id = params[:video_id]
+    @title = params[:title]
+    respond_to do |format|
+      format.js
+    end
+  end
 
   # GET /twitterfeeds/1
   # GET /twitterfeeds/1.xml

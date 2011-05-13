@@ -1,0 +1,1 @@
+page.replace_html("video_player", :partial => "video_player", :locals => {:video_id => @video_id, :title => @title})

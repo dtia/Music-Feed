@@ -1,8 +1,12 @@
-<h1>Listing twitterfeeds</h1>
+<head>
+	<%= stylesheet_link_tag 'scaffold' %>
+</head>
+
+<h1>#nowplaying Tweets</h1>
 
 <table>
   <tr>
-    <th>Text</th>
+    <th>Tweet</th>
     <th>User</th>
 	<th>Video</th>
   </tr>
@@ -13,13 +17,13 @@
 	</td>
     <td><%=h twitterfeed.user %></td>
 	<td>
-		<% if twitterfeed.video != "None"%>
-			<iframe class="youtube-player" type="text/html" width="320" height="180" src="http://www.youtube.com/embed/<%=h twitterfeed.video %>"  frameborder="0">
-			</iframe>
-			<br>
-		<% else %>
-			<h3>None</h3>
-		<% end %>		
+		<% if twitterfeed.video != nil %>
+			<% form_remote_tag :url => { :action => 'play_video', :video_id => twitterfeed.video, :title => twitterfeed.title } do %>
+				<%= submit_tag "Play this video "%>
+			<% end %>
+			<% else %>
+				<h2>No video found.</h2>
+		<% end %>
 	</td>
   </tr>
 <% end %>

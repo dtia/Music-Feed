@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110510054820) do
+ActiveRecord::Schema.define(:version => 20110512204831) do
 
   create_table "line_items", :force => true do |t|
     t.integer  "product_id",                                :null => false
@@ -54,6 +54,7 @@ ActiveRecord::Schema.define(:version => 20110510054820) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "video"
+    t.string   "title"
   end
 
   create_table "users", :force => true do |t|

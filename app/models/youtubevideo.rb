@@ -16,30 +16,29 @@ class Youtubevideo < ActiveRecord::Base
     entry_obj = feed_results["entry"]
     
     video = nil
+    title = nil
     
     if entry_obj != nil
       entry_obj.each do |entry|
+        
         id_obj = entry["id"]
         val_arr = id_obj.values
         vals = val_arr[0]
-        video = vals[-11..-1]      
+        video = vals[-11..-1]
+        
+        title_obj = entry["title"]
+        val_arr = title_obj.values
+        title = val_arr[0]
       end
-    
-      #youtube_url = 'www.youtube.com/watch?v=' + video
-      youtube_url = video
-    
-    else
-      youtube_url = "None"
-    
     end
 
-    return youtube_url
+    return [video, title]
 
   end
   
   def self.get_song_name(tweet)
     
-    puts "the tweet is #{tweet}"
+    #puts "the tweet is #{tweet}"
     r1 = Regexp.new(/\s?#\w+\s?/) #[^@(.+)]
     r2 = Regexp.new(/(http|https)?:?\/?\/?[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(([0-9]{1,5})?\/.*)?$/ix)
     r3 = Regexp.new(/@\w+/)
@@ -50,7 +49,7 @@ class Youtubevideo < ActiveRecord::Base
     song = song.gsub(r3, '')
     song = song.gsub(r4, '')
     song = song.gsub(r5, '')
-    puts "the song is #{song}"
+    #puts "the song is #{song}"
     return song
   end
   
