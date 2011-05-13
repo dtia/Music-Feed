@@ -79,12 +79,16 @@ td {
 }
 
 #main {
-	margin-right: 13em;
 	padding-top: 4ex;
   	padding-left: 2em;
   	background-color: #EBECE4;
 }
 
-#youtube-player {
-	width: 20%;
+#description {
+	width: 50%;
+	padding-left: 2em;
+}
+
+p.italic {
+	font-style:italic;
 }
