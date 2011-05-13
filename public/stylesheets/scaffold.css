@@ -71,17 +71,19 @@ td {
 	float: right;
 	padding-top: 4ex;
 	margin-top: 8em;
-	margin-right: 4em;		
-}
-
-#video_title {
-	white-space: wrap;
+	margin-right: 4em;	
+	width: 500px;
 }
 
 #main {
 	padding-top: 4ex;
   	padding-left: 2em;
   	background-color: #EBECE4;
+}
+
+#video_title {
+	white-space: normal;
+	font-size: 20px;
 }
 
 #description {
