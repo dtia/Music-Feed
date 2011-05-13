@@ -67,8 +67,7 @@ td {
 	float: right;
 	padding-top: 4ex;
 	margin-top: 8em;
-	margin-right: 4em;
-		
+	margin-right: 4em;		
 }
 
 #main {
@@ -76,4 +75,8 @@ td {
 	padding-top: 4ex;
   	padding-left: 2em;
   	background: white;
+}
+
+#youtube-player {
+	width: 20%;
 }
