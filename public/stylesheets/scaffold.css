@@ -55,7 +55,7 @@ a:hover { color: #fff; background-color:#000; }
 table, th {
 	border: 2px solid black;
 	border-collapse:collapse;
-	width: 65%;
+	width: 45%;
 }
 
 td {
