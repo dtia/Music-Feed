@@ -94,3 +94,7 @@ td {
 p.italic {
 	font-style:italic;
 }
+
+#entry {
+	width: 40%;
+}

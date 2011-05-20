@@ -24,6 +24,14 @@ class TwitterfeedsController < ApplicationController
       format.js
     end
   end
+  
+  def play_all
+    @twitterfeeds = Twitterfeed.find(:all)
+    @video_list = Twitterfeed.get_all_videos_for_page(@twitterfeeds)
+    respond_to do |format|
+      format.js
+    end
+  end
 
   # GET /twitterfeeds/1
   # GET /twitterfeeds/1.xml

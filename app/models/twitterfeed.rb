@@ -80,4 +80,15 @@ class Twitterfeed < ActiveRecord::Base
       @twitterfeeds.sum { |twitterfeed| twitterfeed.quantity }
     end
     
+    def self.get_all_videos_for_page(twitterfeeds)
+      @video_list = []
+      twitterfeeds.each do |twitterfeed|
+        if twitterfeed.video != nil
+          @video_list = @video_list.concat([[twitterfeed.video, twitterfeed.title]])
+        end
+      end
+            
+      return @video_list
+    end
+    
 end
