@@ -1,0 +1,2 @@
+      exists  db/migrate
+      create  db/migrate/20110527075630_set_default_on_played.rb

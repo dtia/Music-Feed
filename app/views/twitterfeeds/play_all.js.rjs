@@ -1,1 +1,1 @@
-page.replace_html("video_container", :partial => "video_player_all", :locals => {:video_list => @video_list})
+page.replace_html("video_container", :partial => "video_player_all", :locals => { :video_list => @video_list, :title => "hello", :video_id => "t4H_Zoh7G5A"})

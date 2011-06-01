@@ -1,3 +1,33 @@
-<p id="video_title"><%=h title %></p>
-<iframe class="youtube-player" type="text/html" width="500" height="360" src="http://www.youtube.com/embed/<%=h video_id %>"  frameborder="0">
-</iframe>
+<head>
+<%= javascript_include_tag 'swfobject' %>
+<%= javascript_include_tag :defaults %>
+</head>
+
+<p id="video_title"></p>
+
+<div id="ytapiplayer">
+    You need Flash player 8+ and JavaScript enabled to view this video.
+</div>
+
+
+<script type="text/javascript">
+	var videoListArray = [];
+
+	<% video_list.each do |video_info| %>
+		videoListArray = videoListArray.concat([["<%=h video_info[0] %>", "<%=h video_info[1] %>"]]);
+	<% end %>
+	
+	setVideoList(videoListArray);
+	video_id = getFirstVideo();
+	
+	var params = { allowScriptAccess: "always" };
+  	var atts = { id: "myytplayer" };
+  	swfobject.embedSWF("http://www.youtube.com/e/" + video_id + "?enablejsapi=1&playerapiid=ytplayer",
+                     "ytapiplayer", "500", "360", "8", null, null, params, atts);
+	
+</script>
+<br>
+<br>
+<br>
+<br>
+<input type="button" onclick="playNextVideo();" value="Next song" />

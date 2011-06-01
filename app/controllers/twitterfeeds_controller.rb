@@ -8,7 +8,6 @@ class TwitterfeedsController < ApplicationController
     
     Twitterfeed.parse_search_query("%23nowplaying")
     
-    #Youtubevideo.get_youtube_video(Youtubevideo.concatenate_query("whats my name"))
     @twitterfeeds = Twitterfeed.find(:all)
     
     respond_to do |format|
@@ -26,13 +25,29 @@ class TwitterfeedsController < ApplicationController
   end
   
   def play_all
+    puts "ENTER PLAY ALL"
     @twitterfeeds = Twitterfeed.find(:all)
     @video_list = Twitterfeed.get_all_videos_for_page(@twitterfeeds)
+
+    # if @video_list != nil
+    #       @video_list.each do |video_info|
+    #         @video_id = @video_info[0]
+    #         @video_title = @video_info[1]
+    #       end
+      
+      # twitterfeed_obj = Twitterfeed.find_by_sql("select id, played from twitterfeeds where video= '#{@video_id}'")
+      #       twitterfeed = twitterfeed_obj[0]
+      #       twitterfeed.update_attribute(:played, 't')
+      
+    # else
+    #       puts "I'M DONE!"      
+    # end
+    
     respond_to do |format|
       format.js
     end
   end
-
+  
   # GET /twitterfeeds/1
   # GET /twitterfeeds/1.xml
   def show
@@ -104,5 +119,5 @@ class TwitterfeedsController < ApplicationController
       format.html { redirect_to(twitterfeeds_url) }
       format.xml  { head :ok }
     end
-  end
+  end    
 end
