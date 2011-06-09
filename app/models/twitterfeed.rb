@@ -1,3 +1,4 @@
+require 'json'
 require 'net/http'
 
 class Twitterfeed < ActiveRecord::Base
@@ -54,7 +55,7 @@ class Twitterfeed < ActiveRecord::Base
       http.request(req)
     }
     json_string = res.body
-    json_results = ActiveSupport::JSON.decode(json_string)    
+    json_results = JSON.parse(json_string)
     json_results_obj = json_results["results"]
     
     json_results_obj.each do |search_result_obj|
@@ -66,7 +67,8 @@ class Twitterfeed < ActiveRecord::Base
       #text = 'RT @lvnsykn: #nowplaying lady gaga - just dance! www.yahoo.com'
       #text = '\u30b8\u30e3\u30af\u30bd\u30f3\u796d\u308a\u306a\u3046\u266a #nowplaying Don\'t Stop \'Til You Get Enough / Michael Jackson -  (Album &quot;Off The Wall&quot;, Track 1)'
       twitterfeed = Twitterfeed.new
-      twitterfeed.text = CGI.unescapeHTML(text)
+      unescaped_text = CGI.unescapeHTML(text)
+      twitterfeed.text = unescaped_text
       #twitterfeed.user = username
       video_info = Youtubevideo.get_youtube_video(text)
       twitterfeed.video = video_info[0]

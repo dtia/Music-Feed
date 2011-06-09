@@ -20,9 +20,9 @@
 	setVideoList(videoListArray);
 	video_id = getFirstVideo();
 	
-	var params = { allowScriptAccess: "always" };
+	var params = { allowScriptAccess: "always", allowFullScreen: "true" };
   	var atts = { id: "myytplayer" };
-  	swfobject.embedSWF("http://www.youtube.com/e/" + video_id + "?enablejsapi=1&playerapiid=ytplayer",
+  	swfobject.embedSWF("http://www.youtube.com/e/" + video_id + "?enablejsapi=1&playerapiid=ytplayerall",
                      "ytapiplayer", "500", "360", "8", null, null, params, atts);
 	
 </script>

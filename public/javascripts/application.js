@@ -5,7 +5,7 @@ var ytplayer;
 var videoList;
 var videoMarker;
 
-function onYouTubePlayerReady(playerid) {	
+function onYouTubePlayerReady(playerid) {
 	ytplayer = document.getElementById("myytplayer");
 	ytplayer.addEventListener("onStateChange", "onytplayerStateChange");
 }

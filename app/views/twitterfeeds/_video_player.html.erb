@@ -1,3 +1,20 @@
-	<p id="video_title"><%=h title %></p>
-	<iframe class="youtube-player" type="text/html" width="500" height="360" src="http://www.youtube.com/embed/<%=h video_id %>"  frameborder="0">
-	</iframe>
+<head>
+<%= javascript_include_tag 'swfobject' %>
+<%= javascript_include_tag :defaults %>
+</head>
+
+<p id="video_title"><%=h title %></p>
+
+<div id="ytapiplayer">
+    You need Flash player 8+ and JavaScript enabled to view this video.
+</div>
+	
+<script type="text/javascript">
+
+	var params = { allowScriptAccess: "always", allowFullScreen: "true" };
+  	var atts = { id: "myytplayer" };
+	
+  	swfobject.embedSWF("http://www.youtube.com/e/<%=h video_id %>?enablejsapi=1&playerapiid=ytplayersingle",
+                     "ytapiplayer", "500", "360", "8", null, null, params, atts);
+
+</script>
