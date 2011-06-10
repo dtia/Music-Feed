@@ -1,2 +1,2 @@
 source "http://rubygems.org"
-gem 'json'
+gem "json", "~> 1.5.1"
