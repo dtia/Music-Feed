@@ -3,6 +3,10 @@
 <%= javascript_include_tag :defaults %>
 </head>
 
+<input type="button" onclick="playNextVideo();" value="Next song" />
+<br>
+<br>
+
 <p id="video_title"></p>
 
 <div id="ytapiplayer">
@@ -26,8 +30,3 @@
                      "ytapiplayer", "500", "360", "8", null, null, params, atts);
 	
 </script>
-<br>
-<br>
-<br>
-<br>
-<input type="button" onclick="playNextVideo();" value="Next song" />

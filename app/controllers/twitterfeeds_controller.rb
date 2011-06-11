@@ -6,13 +6,13 @@ class TwitterfeedsController < ApplicationController
     #Twitterfeed.parse_public_timeline
     #Twitterfeed.parse_trending_topics
     
-    Twitterfeed.parse_search_query("%23nowplaying")
-    
+    Twitterfeed.parse_search_query("%23nowplaying")    
     @twitterfeeds = Twitterfeed.find(:all)
-    
+        
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @twitterfeeds }
+      format.js
     end
   end
   
@@ -25,7 +25,6 @@ class TwitterfeedsController < ApplicationController
   end
   
   def play_all
-    puts "ENTER PLAY ALL"
     @twitterfeeds = Twitterfeed.find(:all)
     @video_list = Twitterfeed.get_all_videos_for_page(@twitterfeeds)
 
