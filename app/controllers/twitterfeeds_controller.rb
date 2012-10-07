@@ -8,7 +8,7 @@ class TwitterfeedsController < ApplicationController
     
     Twitterfeed.parse_search_query("%23nowplaying")    
     @twitterfeeds = Twitterfeed.find(:all)
-        
+    
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @twitterfeeds }
@@ -28,21 +28,19 @@ class TwitterfeedsController < ApplicationController
     @twitterfeeds = Twitterfeed.find(:all)
     @video_list = Twitterfeed.get_all_videos_for_page(@twitterfeeds)
 
-    # if @video_list != nil
-    #       @video_list.each do |video_info|
-    #         @video_id = @video_info[0]
-    #         @video_title = @video_info[1]
-    #       end
-      
-      # twitterfeed_obj = Twitterfeed.find_by_sql("select id, played from twitterfeeds where video= '#{@video_id}'")
-      #       twitterfeed = twitterfeed_obj[0]
-      #       twitterfeed.update_attribute(:played, 't')
-      
-    # else
-    #       puts "I'M DONE!"      
-    # end
+    respond_to do |format|
+      format.js
+    end
+  end
+  
+  def admin
+    Twitterfeed.destroy_all
+    Twitterfeed.parse_search_query("%23nowplaying")
+    @twitterfeeds = Twitterfeed.find(:all)
     
     respond_to do |format|
+      format.html
+      format.xml  { render :xml => @twitterfeeds }
       format.js
     end
   end

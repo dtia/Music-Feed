@@ -6,6 +6,7 @@ class Youtubevideo < ActiveRecord::Base
     query = format_query(song_name)
     url = URI.parse('http://gdata.youtube.com/feeds/api/videos')
     http_url = url.path + '?q=' + query + '&orderby=relevance&start-index=1&max-results=1&v=2&alt=json'
+    puts http_url
     req = Net::HTTP::Get.new(http_url)
     res = Net::HTTP.start(url.host, url.port) {|http|
       http.request(req)
@@ -31,6 +32,9 @@ class Youtubevideo < ActiveRecord::Base
         val_arr = title_obj.values
         title = val_arr[0]
       end
+      
+    else
+      puts feed_results  
     end
 
     return [video, title, song_name]

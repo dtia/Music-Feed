@@ -1,0 +1,39 @@
+<head>
+	<meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+	<%= stylesheet_link_tag 'scaffold' %>	
+	<%= javascript_include_tag 'swfobject' %>
+</head>
+
+<h1>#nowplaying Tweets</h1>
+
+<% form_remote_tag :url => { :action => 'play_all' } do %>
+	<%= submit_tag "Play all"%>
+<% end %>
+
+<div id="twitterfeedtable">
+	<table>
+		<tr>
+		  <th>Tweet</th>
+		  <th>Song Query</th>
+		<th>Video</th>
+		</tr>
+
+		<% for twitterfeed in @twitterfeeds %>
+		  <tr>
+			<td><span id="entry"><%=h twitterfeed.text %></span></td>
+			<td><%=h twitterfeed.user %></td>
+			<td>
+				<% if twitterfeed.video != nil %>			
+					<% form_remote_tag :url => { :action => 'play_video', :video_id => twitterfeed.video, :title => twitterfeed.title } do %>
+						<%= submit_tag "Play this video "%>
+					<% end %>
+					<% else %>
+						<h5>No video found.</h5>
+				<% end %>
+			</td>
+		  </tr>
+		<% end %>
+	</table>
+</div>
+
+<br />
